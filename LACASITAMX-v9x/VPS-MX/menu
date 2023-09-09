@@ -12,7 +12,7 @@ sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1 > /dev/null 2>&1
 sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1 > /dev/null 2>&1
 sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1 > /dev/null 2>&1
 # [[ ! -d /usr/local/lib/rm ]] && exit
-_hora=$(printf '%(%D-%H:%M:%S)T') 
+_HOUR=$(printf '%(%D-%H:%M:%S)T') 
 #COLORES 
 red=$(tput setaf 1)
 gren=$(tput setaf 2)
@@ -48,8 +48,8 @@ v22=$(cat /etc/versin_script)
 #[[ $v11 = $22 ]] && 
 vesaoSCT="\033[1;37mVersion \033[1;32m$v22\033[1;31m]" #|| vesaoSCT="\033[1;32mUPDATE\033[1;91m[\033[1;32m$v11\033[1;31m]" 
 aviso_bock () {
-echo 'echo -e "\033[1;91m————————————————————————————————————————————————————\n       ¡SCRIPT BLOQUEADO POR CLONING|| CONTACTE CON SU PROVEDOR ! \n————————————————————————————————————————————————————"' > /usr/bin/menu
-echo 'echo -e "\033[1;91m————————————————————————————————————————————————————\n       ¡SCRIPT BLOQUEADO POR CLONING|| CONTACTE CON SU PROVEDOR ! \n————————————————————————————————————————————————————"' > /usr/bin/VPS-MX
+echo 'echo -e "\033[1;91m————————————————————————————————————————————————————\n       ¡SCRIPT BLOCKED POR CLONING|| CONTACTE CON SU PROVEDOR ! \n————————————————————————————————————————————————————"' > /usr/bin/menu
+echo 'echo -e "\033[1;91m————————————————————————————————————————————————————\n       ¡SCRIPT BLOCKED POR CLONING|| CONTACTE CON SU PROVEDOR ! \n————————————————————————————————————————————————————"' > /usr/bin/VPS-MX
  rm -rf /etc/VPS-MX 
 }
 local colors="/etc/VPS-MX/colors"
@@ -91,7 +91,7 @@ SEMCOR='\e[0m'
   -az)cor="${COLOR[4]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -bra)cor="${COLOR[0]}${SEMCOR}" && echo -e "${cor}${2}${SEMCOR}";;
   "-bar2"|"-bar")cor="\e[1;30m————————————————————————————————————————————————————" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
-  -tit)echo -e "\e[91m≪━━─━━─━─━─━─━─━━─━━─━─━─◈─━━─━─━─━─━━─━─━━─━─━━─━≫   \e[0m\n \e[2;97m\e[3;93m ❯❯❯❯ 𝙎𝘾𝙍𝙄𝙋𝙏 𝙈𝙊𝘿 𝙇𝘼𝘾𝘼𝙎𝙄𝙏𝘼𝙈𝙓 ❮❮❮❮  \033[0m \033[1;31m[\033[1;32m$vesaoSCT\n\e[91m≪━━─━─━━━─━─━─━─━─━━─━─━─◈─━─━─━─━─━━━─━─━─━━━─━─━≫   \e[0m" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
+  -tit)echo -e "\e[91m.   \e[0m\n \e[2;97m\e[3;93m BLACK NICK SCRIPT  \033[0m \033[1;31m[\033[1;32m$vesaoSCT\n\e[91m.   \e[0m" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
   -bar3) $([[ ! -e $(echo -e $(echo "2F7573722F6C6F63616C2F6C69622F726D"| sed 's/../\\x&/g;s/$/ /')) ]] && $( aviso_bock > /dev/null 2>&1)) && echo -e "${SEMCOR}${cor}${SEMCOR}";;
  esac
 }
@@ -406,7 +406,7 @@ done
 msg -bar2
 unset selection
 while [[ ${selection} != @([1-8]) ]]; do
-echo -ne "\033[1;37m$(fun_trans "  ► Selecione una Opcion"): " && read selection
+echo -ne "\033[1;37m$(fun_trans "  ► Select an Option"): " && read selection
 tput cuu1 && tput dl1
 done
 [[ -e /etc/VPS-MX/texto-mx ]] && rm /etc/VPS-MX/texto-mx
@@ -441,10 +441,10 @@ _usop=$(top -bn1 | sed -rn '3s/[^0-9]* ([0-9\.]+) .*/\1/p;4s/.*, ([0-9]+) .*/\1/
 
 modelo1=$(printf '%-11s' "$(lscpu | grep Arch | sed 's/\s\+/,/g' | cut -d , -f2)")
 mb=$(printf '%-8s' "$(free -h | grep Mem | sed 's/\s\+/,/g' | cut -d , -f6)")
-_hora=$(printf '%(%H:%M:%S)T')
+_HOUR=$(printf '%(%H:%M:%S)T')
 _hoje=$(date +'%d/%m/%Y')
 
-echo -e "\033[1;37m OS \033[1;31m: \033[1;32m$_system \033[1;37mHORA\033[1;31m: \033[1;32m$_hora  \033[1;37mIP\033[1;31m:\033[1;32m $(meu_ip)"
+echo -e "\033[1;37m OS \033[1;31m: \033[1;32m$_system \033[1;37mHOUR\033[1;31m: \033[1;32m$_HOUR  \033[1;37mIP\033[1;31m:\033[1;32m $(meu_ip)"
 echo -e "\033[1;37m RAM\e[31m: \033[1;32m$_ram \033[1;37mUSADO\033[1;31m: \033[1;32m$mb\033[1;37m LIBRE\033[1;31m: \033[1;32m$_ram2"
 
 }
@@ -699,7 +699,7 @@ clear
 clear 
 #msg -bar
 msg -tit
-msg -ama "          ¿ DESEA DESINSTALAR SCRIPT ?"
+msg -ama "          ¿ DESEA UNINSTALL SCRIPT ?"
 msg -bar
 echo -e " Esto borrara todos los archivos del scrip VPS_MX"
 msg -bar
@@ -725,10 +725,10 @@ sudo apt-get --purge remove stunnel4 -y > /dev/null 2>&1
 sudo apt-get --purge remove dropbear -y > /dev/null 2>&1
 sudo apt-get autoremove -y &>/dev/null
 }
-horas(){
+HOURs(){
 #code by rufu99
 msg -bar
-echo -e "	\e[41mACTUALIZAR HORA LOCAL\e[0m"
+echo -e "	\e[41mUPDATE HOUR LOCAL\e[0m"
 msg -bar
 	n=1
     for i in $(ls /usr/share/zoneinfo/America); do
@@ -744,7 +744,7 @@ msg -bar
   rm -rf /etc/localtime > /dev/null 2>&1
   echo "America/${r[$opci]}" > /etc/timezone
 ln -fs /usr/share/zoneinfo/America/${r[$opci]} /etc/localtime > /dev/null 2>&1
-dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1 && echo -e "\033[1;32m [HORA ACTUALIZADA]" || echo -e "\033[1;31m [HORA NO ACTUALIZADO]"
+dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1 && echo -e "\033[1;32m [HOUR ACTUALIZADA]" || echo -e "\033[1;31m [HOUR NO ACTUALIZADO]"
 #fin
 #
 }
@@ -806,7 +806,7 @@ echo -e " \e[1;93m [\e[92m1\e[93m] $(msg -verm2 "➛ ")$(msg -verd "  INICIAR AP
 echo -e " \e[1;93m [\e[92m2\e[93m] $(msg -verm2 "➛ ")$(msg -verm2 " DETENER APP ONLINE   ")"
 echo -e " \e[1;93m [\e[92m0\e[93m] $(msg -verm2 "➛ ")$(msg -bra "  VOLVER   ")"
 msg -bar
-echo -ne " ►\e[1;37m Selecione Una Opcion: \e[33m " && read select
+echo -ne " ►\e[1;37m Select an Option: \e[33m " && read select
 case $select in
 0)menu3 ;;
 1) onlineapp && msg -ne "Enter Para Continuar" && read enter
@@ -907,7 +907,7 @@ echo -e "\e[1;93m[\e[92m12\e[93m]$(msg -verm2 "➛ ")$(msg -azu "WIREGUARD    ${
 echo -e "\e[1;93m[\e[92m13\e[93m]$(msg -verm2 "➛ ")$(msg -azu "NOTI-BOT     $noty")"
 echo -e "\e[1;93m[\e[92m14\e[93m]$(msg -verm2 "➛ ")$(msg -azu "CHECK-USER   $chek")"
 msg -bar
-echo -ne " ►\e[1;37m Selecione Una Opcion: \e[33m " && read select
+echo -ne " ►\e[1;37m Select an Option: \e[33m " && read select
 case $select in
 0) ;;
 1) ${SCPinst}/budp.sh && msg -ne "Enter Para Continuar" && read enter
@@ -1007,7 +1007,7 @@ echo -e "\e[1;93m[\e[92m1\e[93m]$(msg -verm2 "➛ ")$(msg -azu "ACTIVAR NOTI-BOT
 msg -bar
 echo -e "	     	\e[1;93m[\e[92m0\e[93m]$(msg -verm2 "➛ ")$(msg -azu "VOLVER")"
 msg -bar
-echo -ne " ►\e[1;37m Selecione Una Opcion: \e[33m " && read selectos
+echo -ne " ►\e[1;37m Select an Option: \e[33m " && read selectos
 case $selectos in
 0)menu3 ;;
 1) NOTIFY && msg -ne "Enter Para Continuar" && read enter
@@ -1073,7 +1073,7 @@ echo -e " \e[1;93m[\e[92m1\e[93m] $(msg -verm2 "➛ ")$(msg -verd "  INICIAR BOT
 echo -e " \e[1;93m[\e[92m2\e[93m] $(msg -verm2 "➛ ")$(msg -verm2 " DETENER BOT MANAGER   ")"
 echo -e " \e[1;93m[\e[92m0\e[93m] $(msg -verm2 "➛ ")$(msg -bra "  VOLVER   ")"
 msg -bar
-echo -ne " ►\e[1;37m Selecione Una Opcion: \e[33m " && read select
+echo -ne " ►\e[1;37m Select an Option: \e[33m " && read select
 case $select in
 0)menu3 ;;
 1)activar && msg -ne "Enter Para Continuar" && read enter
@@ -1097,7 +1097,7 @@ elif [ -e /etc/squid3/squid.conf ]; then
 fi
 echo -e "		\e[91m\e[43mHERRAMIENTAS BASICOS\e[0m"
 msg -bar
-echo -e " \e[1;93m[\e[92m1\e[93m]$(msg -verm2 " ➛ ")$(msg -azu "ACTUALIZAR HORA LOCAL")"
+echo -e " \e[1;93m[\e[92m1\e[93m]$(msg -verm2 " ➛ ")$(msg -azu "UPDATE HOUR LOCAL")"
 echo -e " \e[1;93m[\e[92m2\e[93m]$(msg -verm2 " ➛ ")$(msg -azu "HTOP")"
 echo -e " \e[1;93m[\e[92m3\e[93m]$(msg -verm2 " ➛ ")$(msg -azu "MODIFICAR PUERTOS ACTIVOS")"
 echo -e " \e[1;93m[\e[92m4\e[93m]$(msg -verm2 " ➛ ")$(msg -azu "PAYLOAD FUERZA BRUTA")"
@@ -1112,10 +1112,10 @@ echo -e " \e[1;93m[\e[92m12\e[93m]$(msg -verm2 "➛ ")$(msg -azu "AGREGAR ROOT a
 echo -e " \e[1;93m[\e[92m13\e[93m]$(msg -verm2 "➛ ")$(msg -azu "AUTENTIFICAR SQUID")"
 echo -e " \e[1;93m[\e[92m0\e[93m]$(msg -verm2 " ➛ ")$(msg -azu "VOLVER")"
 msg -bar
-echo -ne " ►\e[1;37m Selecione Una Opcion: \e[33m " && read select
+echo -ne " ►\e[1;37m Select an Option: \e[33m " && read select
 case $select in
 0)menu3 ;;
-1)horas ;;
+1)HOURs ;;
 2)monhtop ;;
 3)${SCPfrm}/ports.sh && msg -ne "Enter Para Continuar" && read enter
 menu3 ;;
@@ -1175,7 +1175,7 @@ read  -p " Nuevo passwd: " pass
 sleep 1s
 msg -bar
 echo -e "${cor[3]} $(fun_trans "Contraseña cambiada con exito!")"
-echo -e "${cor[2]} $(fun_trans "Su contraseña ahora es"): ${cor[4]}$pass"
+echo -e "${cor[2]} $(fun_trans "Su contraseña aHOUR es"): ${cor[4]}$pass"
 msg -bar
 return
 }
@@ -1238,7 +1238,7 @@ read  -p " Nuevo passwd: " pass
 sleep 1s
 msg -bar
 echo -e "${cor[3]} Configuraciones aplicadas con exito!"
-echo -e "${cor[2]} Su contraseña ahora es: ${cor[4]}$pass"
+echo -e "${cor[2]} Su contraseña aHOUR es: ${cor[4]}$pass"
 service ssh restart > /dev/null 2>&1
 msg -bar
 return
@@ -1260,7 +1260,7 @@ msg -ama "Limpieza Completa"
 TCPspeed () {
 if [[ `grep -c "^#ADM" /etc/sysctl.conf` -eq 0 ]]; then
 #INSTALA
-msg -ama "$(fun_trans "TCP Speed No Activado, Desea Activar Ahora")?"
+msg -ama "$(fun_trans "TCP Speed No Activado, Desea Activar AHOUR")?"
 msg -bar
 while [[ ${resposta} != @(s|S|n|N|y|Y) ]]; do
 read -p " [S/N]: " -e -i s resposta
@@ -1280,7 +1280,7 @@ msg -ama "$(fun_trans "TCP Activo Con Exito")!"
 } || msg -ama "$(fun_trans "Cancelado")!"
  else
 #REMOVE
-msg -ama "$(fun_trans "TCP Speed ya esta activado, desea detener ahora")?"
+msg -ama "$(fun_trans "TCP Speed ya esta activado, desea detener aHOUR")?"
 msg -bar
 while [[ ${resposta} != @(s|S|n|N|y|Y) ]]; do
 read -p " [S/N]: " -e -i s resposta
@@ -1410,7 +1410,7 @@ msg -bar
   read c_ram
   if [[ $c_ram = @(s|S|y|Y) ]]; then
     tput cuu1 && tput dl1
-    echo -ne "$(msg -azu " PONGA UN NÚMERO, EJEMPLO [1-12HORAS]:") "
+    echo -ne "$(msg -azu " PONGA UN NÚMERO, EJEMPLO [1-12HOURS]:") "
     read ram_c
     if [[ $ram_c =~ ^[0-9]+$ ]]; then
       crontab -l > /root/cron
@@ -1422,7 +1422,7 @@ msg -bar
       service cron restart
       rm /root/cron
       tput cuu1 && tput dl1
-      msg -azu " Auto-Limpieza programada cada: $(msg -verd "${ram_c} HORAS")" && msg -bar && sleep 2
+      msg -azu " Auto-Limpieza programada cada: $(msg -verd "${ram_c} HOURS")" && msg -bar && sleep 2
     else
       tput cuu1 && tput dl1
       msg -verm2 " ingresar solo numeros entre 1 y 12"
@@ -1682,7 +1682,7 @@ monitor-user(){
 	_lok=$(printf '%-7s' "$i")
 	_tuser=$(echo "$users"|sed '/^$/d'|wc -l)
 
-	echo -e " $(msg -verd "ONLINE:") $(msg -azu "$_onlin") $(msg -verm2 "EXPIRADOS:") $(msg -azu "$_userexp") $(msg -bra "\e[95mBLOQUEADO:") $(msg -azu "$_lok")" #$(msg -ama "TOTAL:") $(msg -azu "$_tuser")"
+	echo -e " $(msg -verd "ONLINE:") $(msg -azu "$_onlin") $(msg -verm2 "EXPIRED:") $(msg -azu "$_userexp") $(msg -bra "\e[95mBLOCKED:") $(msg -azu "$_lok")" #$(msg -ama "TOTAL:") $(msg -azu "$_tuser")"
 }
 # SISTEMA DE SELECAO
 selection_fun () {
@@ -1690,7 +1690,7 @@ local selection="null"
 local range
 for((i=0; i<=$1; i++)); do range[$i]="$i "; done
 while [[ ! $(echo ${range[*]}|grep -w "$selection") ]]; do
-echo -ne "\033[1;37m$(fun_trans " ► Selecione una Opcion"): " >&2
+echo -ne "\033[1;37m$(fun_trans " ► Select an Option"): " >&2
 read selection
 tput cuu1 >&2 && tput dl1 >&2
 done
@@ -1748,7 +1748,7 @@ fi
 
 else
 [[ -e ${SCPdir}/USRonlines ]] && msg -bar && msg -ne "\033[1;97m LIMITADOR:\033[1;92m$verificar \033[1;97m AUTO-DESBLOQUEO:\033[1;92m$desbloqueo \e[1;97mMONITOR:\e[34m${limseg}s\n \033[1;32mCONECTADOS: " && echo -ne "\033[1;97m$(cat ${SCPdir}/USRonlines) "
-[[ -e ${SCPdir}/USRexpired ]] && msg -ne "   EXPIRADOS: " && echo -ne "\033[1;97m$(cat ${SCPdir}/USRexpired) "  && msg -ne " \033[1;95m BLOQUEADOS: " && echo -e "\033[1;97m$(cat ${SCPdir}/USRbloqueados)" #\n\033[1;97m        ACTULIZACION DE MONITOR CADA: \033[1;34m $limseg s" 
+[[ -e ${SCPdir}/USRexpired ]] && msg -ne "   EXPIRED: " && echo -ne "\033[1;97m$(cat ${SCPdir}/USRexpired) "  && msg -ne " \033[1;95m BLOCKEDS: " && echo -e "\033[1;97m$(cat ${SCPdir}/USRBLOCKEDs)" #\n\033[1;97m        ACTULIZACION DE MONITOR CADA: \033[1;34m $limseg s" 
 fi
 monhtop () {
 clear 
@@ -1757,7 +1757,7 @@ clear
 msg -tit
 echo -ne " \033[1;93m             MONITOR DE PROCESOS HTOP\n"
 msg -bar
-msg -bra "    RECUERDA SALIR CON : \033[1;96m CTRL + C o FIN + F10 "
+msg -bra "    RECUERDA LEAVE CON : \033[1;96m CTRL + C o FIN + F10 "
 [[ $(dpkg --get-selections|grep -w "htop"|head -1) ]] || apt-get install htop -y &>/dev/null
 msg -bar
 read -t 10 -n 1 -rsp $'\033[1;39m Preciona Enter Para continuar\n'
@@ -1775,14 +1775,14 @@ msg -bar
 msg -bar
 msg -bar3
 on="\e[1;32m[ON]" && off="\e[1;31m[OFF]"
-echo -e " \e[1;93m[\e[92m1\e[93m] $(msg -verm2 "➛ ") $(msg -azu "ADMINISTRAR CUENTAS | SSH/SSL/DROPBEAR")" 
-echo -e " \e[1;93m[\e[92m2\e[93m] $(msg -verm2 "➛ ") $(msg -azu "ADMINISTRAR CUENTAS | SS/SSRR")" 
-echo -e " \e[1;93m[\e[92m3\e[93m] $(msg -verm2 "➛ ") $(msg -azu "ADMINISTRAR CUENTAS | V2RAY --> $vra")"
-echo -e " \e[1;93m[\e[92m4\e[93m] $(msg -verm2 "➛ ") \e[1;31m\033[47mPROTOCOLOS\e[0m  \e[93m||  \e[1;37m\e[41mHERRAMIENTAS\e[0m"
-echo -e " \e[1;93m[\e[92m5\e[93m] $(msg -verm2 "➛ ") $(msg -azu "MONITOR DE PROTOCOLOS --------> ${monitorserv}")"
-echo -e " \e[1;93m[\e[92m6\e[93m] $(msg -verm2 "➛ ") $(msg -azu "AUTO INICIAR SCRIPT ----------> $AutoRun ")"
+echo -e " \e[1;93m[\e[92m1\e[93m] $(msg -verm2 "➛ ") $(msg -azu "MANAGE ACCOUNTS | SSH/SSL/DROPBEAR")" 
+echo -e " \e[1;93m[\e[92m2\e[93m] $(msg -verm2 "➛ ") $(msg -azu "MANAGE ACCOUNTS | SS/SSRR")" 
+echo -e " \e[1;93m[\e[92m3\e[93m] $(msg -verm2 "➛ ") $(msg -azu "MANAGE ACCOUNTS | V2RAY --> $vra")"
+echo -e " \e[1;93m[\e[92m4\e[93m] $(msg -verm2 "➛ ") \e[1;31m\033[47mPROTOCOLS\e[0m  \e[93m||  \e[1;37m\e[41mTOOLS\e[0m"
+echo -e " \e[1;93m[\e[92m5\e[93m] $(msg -verm2 "➛ ") $(msg -azu "MONITOR DE PROTOCOLS--------> ${monitorserv}")"
+echo -e " \e[1;93m[\e[92m6\e[93m] $(msg -verm2 "➛ ") $(msg -azu "AUTO START SCRIPT ----------> $AutoRun ")"
 msg -bar
-echo -e " \e[1;93m[\e[92m7\e[93m] \e[97m$(msg -verm2 "➛ ") $(msg -verd "ACTUALIZAR") \e[1;93m [\e[92m8\e[93m]\e[97m$(msg -verm2 "➛ ")\033[1;31mDESINSTALAR  \e[1;93m[\e[92m0\e[93m]$(msg -verm2 "➛ ") $(msg -bra "\e[97m\033[1;41mSALIR")"
+echo -e " \e[1;93m[\e[92m7\e[93m] \e[97m$(msg -verm2 "➛ ") $(msg -verd "UPDATE") \e[1;93m [\e[92m8\e[93m]\e[97m$(msg -verm2 "➛ ")\033[1;31mUNINSTALL  \e[1;93m[\e[92m0\e[93m]$(msg -verm2 "➛ ") $(msg -bra "\e[97m\033[1;41mLEAVE")"
 msg -bar
 
 selection=$(selection_fun 13)
